@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 #uname = test
 #pass = test1
@@ -17,3 +18,13 @@ class Page(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+
+    # Override the __unicode__() method to return out something meaningful!
+    def __unicode__(self):
+        return self.user.username

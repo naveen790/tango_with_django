@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <!-- Bootstrap -->
+	    <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
+	    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+	    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
+        <title>Rango</title>
+    </head>
+
+    <body>
+        <div>
+            {% block body_block %}{% endblock %}
+        </div>
+
+        <hr />
+
+        <div>
+            <ul>
+            {% if user.is_authenticated %}
+                <li><a href="/rango/restricted/">Restricted Page</a></li>
+                <li><a href="/rango/logout/">Logout</a></li>
+                <li><a href="/rango/add_category/">Add a New Category</a></li>
+            {% else %}
+                <li><a href="/rango/register/">Register Here</a></li>
+                <li><a href="/rango/login/">Login</a></li>
+            {% endif %}
+
+                <li><a href="/rango/about/">About</a></li>
+            </ul>
+        </div>
+            <script src="{% static 'js/jquery.js' %}"></script>
+    		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+    </body>
+</html>
